@@ -6,70 +6,15 @@
   [website.events :as events]
   [quil.core :as q]
   [quil.middleware :as m]
-  ["codemirror" :as CodeMirror]
-  ))
+  ["prismjs/prism.js" :as prism]))
 
-(defn code-mirror
-  "Create a code-mirror editor. The parameters:
-  value-atom (reagent atom)
-    when this changes, the editor will update to reflect it.
-  options
-  :style (reagent style map)
-    will be applied to the container element
-  :js-cm-opts
-    options passed into the CodeMirror constructor
-  :on-cm-init (fn [cm] -> nil)
-    called with the CodeMirror instance, for whatever extra fiddling you want to do."
-  [value-atom]
-
-  (let [cm (atom nil)]
-    (r/create-class
-     {:component-did-mount
-      (fn [this]
-        (let [el (rdom/dom-node this)
-              inst (CodeMirror.
-                    el
-                    (clj->js
-                     (merge
-                      {:lineNumbers true
-                       :viewportMargin js/Infinity
-                       :matchBrackets true
-                       :autofocus false
-                       :value @value-atom
-                       :autoCloseBrackets true
-                       :mode "clojure"})))]
-
-          (reset! cm inst)
-          (.on inst "change"
-               (fn []
-                 (let [value (.getValue inst)]
-                   (when-not (= value @value-atom)
-                     (reset! value-atom value)))))))
-
-      :component-did-update
-      (fn [this old-argv]
-        (when-not (= @value-atom (.getValue @cm))
-          (.setValue @cm @value-atom)
-          ;; reset the cursor to the end of the text, if the text was changed externally
-          (let [last-line (.lastLine @cm)
-                last-ch (count (.getLine @cm last-line))]
-            (.setCursor @cm last-line last-ch))))
-
-      :reagent-render
-      (fn [_ _ _]
-        @value-atom
-        [:div {:style {:width "670px"}}])})))
 
 (def title "This is the title of the fancy first blog post")
 (def body-preview "The body is very interesting")
-(def body [:div "Lorem ipsum testing things :)"
-           [code-mirror (r/atom "(str \"hello\")")]])
-
-
-  
-;[:pre [:code {:class "Clojure"
- ;               :ref (fn [n] (when n (js/setTimeout #(hl/highlightBlock n) 0)))}
-  ;       "(+ 1 1) ;=> 2\n2"]]
+(def body [:code {:class "language-clojure"
+                 :ref (fn [n] (when n (prism/highlightElement n)))}
+           "(+ 1 1) ;=> "
+             "(str \"hello world\")"])
 
 (def tag :blank)
 (def route "blank")
@@ -116,6 +61,9 @@
 (defn sketch-update
   [state]
   (assoc state :time (+ 0.05 (:time state))))
+
+
+
 
 (defn canvas []
   (r/create-class
