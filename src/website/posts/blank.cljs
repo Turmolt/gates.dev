@@ -17,6 +17,7 @@
                  "(str \"hello world\")"]])
 
 
+
 (def tag :blank)
 (def route "blank")
 
@@ -90,8 +91,7 @@
    [canvas]])
 
 
-(def post {:name "blank"
+(def post {:name route
            :preview preview
            :panel panel
-           :tag tag
-           :route route})
+           :tag tag})

@@ -18,7 +18,7 @@
       :controllers [{:start (fn [& params] (js/console.log "Posts"))
                      :stop (fn [& params] (js/console.log "Leaving Posts"))}]}]]
    (for [post blog/posts]
-     [(:route post)
+     [(:name post)
       {:name (:tag post)
        :controllers [{:start (fn [& params] (js/console.log (:name post)))
                       :stop (fn [& params] (js/console.log "Leaving " (:name post)))}]}])])

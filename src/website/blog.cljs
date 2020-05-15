@@ -1,8 +1,9 @@
 (ns website.blog
  (:require [re-frame.core :as rf]
-           [website.posts.blank :as p0]))
+           [website.posts.blank :as p0]
+           [website.posts.one :as p1]))
 
-(def posts [p0/post])
+(def posts [p1/post p0/post])
 
 (defn post-preview [post]
   [:a {:href (str "/" (:name post))
@@ -15,7 +16,7 @@
    [:h1 {:class "f400"
          :style {:font-size 23
                  :text-align-last "center"
-                 }} "Posts about things that I find interesting"]
+                 }} "Projects, shaders, clojure and anything that interests me"]
    [:div
     (for [x posts] [post-preview x])]])
 

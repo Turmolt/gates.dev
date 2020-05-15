@@ -67,7 +67,7 @@
     [link "http://www.heliosinteractive.com" "Helios Interactive"]
     " where I work with a talented team to create innovative marketing solutions, interactive games, and data visualizations. While in college I was a developer for the "
     [link "https://umaine.edu/vemi/" "Virtual Environment and Multimodal Interaction laboratory"]
-    " at the University of Maine where I helped create research projects that pushed the limits of human-computer interaction. "
+    " at the University of Maine where I helped create projects that pushed the limits of human-computer interaction. "
     "I enjoy spending my free time tinkering with shaders, clojure, and taking my dog on adventures."]
    [:p "If you would like to partner up and create something awesome " [link "mailto:skiracer1292@gmail.com" "contact me"] " and we can make it happen."]])
 
