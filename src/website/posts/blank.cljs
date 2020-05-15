@@ -11,10 +11,11 @@
 
 (def title "This is the title of the fancy first blog post")
 (def body-preview "The body is very interesting")
-(def body [:code {:class "language-clojure"
-                 :ref (fn [n] (when n (prism/highlightElement n)))}
-           "(+ 1 1) ;=> "
-             "(str \"hello world\")"])
+(def body [:pre [:code {:class "language-clojure line-numbers"
+                        :ref (fn [n] (when n (prism/highlightElement n)))}
+                 "(defn over-25? [& rest] \n (filter #(> 25 (:age %)) rest)) \n;=> 2\n"
+                 "(str \"hello world\")"]])
+
 
 (def tag :blank)
 (def route "blank")
