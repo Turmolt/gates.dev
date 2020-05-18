@@ -17,6 +17,11 @@
      {:name :posts
       :controllers [{:start (fn [& params] (js/console.log "Posts"))
                      :stop (fn [& params] (js/console.log "Leaving Posts"))}]}]]
+   ["projects"
+    [""
+     {:name :projects
+      :controllers [{:start (fn [& params] (js/console.log "Projects"))
+                     :stop (fn [& params] (js/console.log "Leaving Projects"))}]}]]
    (for [post blog/posts]
      [(:name post)
       {:name (:tag post)

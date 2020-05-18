@@ -2,8 +2,6 @@
  (:require 
   [reagent.core :as r]
   [reagent.dom :as rdom]
-  [re-frame.core :as rf]
-  [website.events :as events]
   [quil.core :as q]
   [quil.middleware :as m]
   ["prismjs/prism.js" :as prism]))
@@ -11,10 +9,12 @@
 
 (def title "This is the title of the fancy first blog post")
 (def body-preview "The body is very interesting")
-(def body [:pre [:code {:class "language-clojure line-numbers"
-                        :ref (fn [n] (when n (prism/highlightElement n)))}
-                 "(defn over-25? [& rest] \n (filter #(> 25 (:age %)) rest)) \n;=> 2\n"
-                 "(str \"hello world\")"]])
+(def body 
+  [:div {:style {:font-size 17 :line-height 1.3}} "I have made a website! I wanted a place to showcase things that I have worked on and to be able to talk about cool programming stuff, so here we are!"
+   [:pre [:code {:class "language-clojure line-numbers"
+                 :ref (fn [n] (when n (prism/highlightElement n)))}
+          "(defn over-25? [& rest] \n (filter #(> 25 (:age %)) rest)) \n"
+          "(str \"hello world\")"]]])
 
 
 
@@ -35,36 +35,67 @@
     body-preview]])
 
 
-(defn update-sketch
-  [state]
-  state)
+(def numcircles 550)
+
+(def palette
+  "a palette of colors"
+  {:name        "Golden Ratio"
+   :background  [255 255 255]
+   :colors      [[100 0 0]
+                 [200 100 50]
+                 [250 200 100]
+                 [90 8 0]]})
+
+(defonce art (atom nil))
+
+(defn rand-color
+  "returns a random color from the palette"
+  []
+  (rand-nth (:colors palette)))
 
 (defn circle
+  "creates a map of randomly colored circles"
   [id]
-  {:id id
-   :time 0
-   :color [0 0 0]})
+  {:id     id
+   :delta  id
+   :color  (rand-color)})
 
-(defn setup-sketch
+(defn draw-circle
+  "draws a circle at the position calculated by its angle from start and id"
+  [id angle]
+  (q/ellipse (+ (/ 700 2) (* id (Math/cos angle)))
+             (+ (/ 700 2) (* id (Math/sin angle)))
+             10 10))
+
+(defn angle
+  "calulate the angle based on the delta provided"
+  [delta]
+  (-> (q/frame-count)
+      (* 0.0001)
+      (* delta)))
+
+(defn sketch-setup
+  "Returns inital state of page for update-render loop"
   []
-  (apply q/background [255 255 255])
-  (circle 0))
-
-(defn center-scale
-  [t]
-  (+ 50 (* 20 t)))
-
-(defn draw [state]
-  (apply q/background [255 255 255])
-  (apply q/fill [0 0 0])
-  (let [time (:time state)]
-    (q/ellipse (center-scale (Math/cos (/ time 2.0))) (center-scale (Math/sin time)) 10 10)))
+  (apply q/background (:background palette))
+  (map circle (range 0 numcircles)))
 
 (defn sketch-update
+  "update the state each frame"
   [state]
-  (assoc state :time (+ 0.05 (:time state))))
+  (map #(assoc %
+               :delta (+ 0.01 (- (:id %)  (:time %))))
+       state))
 
-
+(defn sketch
+  "make art"
+  [circles]
+  (apply q/background (:background palette))
+  (q/no-stroke)
+  (doseq [c circles]
+    (apply q/fill (:color c))
+    (draw-circle (:id c)
+                 (angle (:delta c)))))
 
 
 (defn canvas []
@@ -72,13 +103,16 @@
    {:component-did-mount
     (fn [component]
       (let [node (rdom/dom-node component)]
-        (q/sketch
-         :host node
-         :setup #'setup-sketch
-         :update #'sketch-update
-         :size [100 100]
-         :draw #'draw
-         :middleware [m/fun-mode])))
+        (set! art (q/sketch
+                   :id "circles"
+                   :host node
+                   :setup #'sketch-setup
+                   :update #'sketch-update
+                   :size [700 700]
+                   :draw #'sketch
+                   :middleware [m/fun-mode]))))
+    :component-will-unmount
+    #(q/with-sketch art (q/exit))
     :render (fn [] [:div])}))
 
 (defn panel []
