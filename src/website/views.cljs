@@ -2,7 +2,7 @@
  (:require
   [re-frame.core :as rf]
   [website.subs :as subs]
-  [website.blog :as blog]
+  [website.pages :as pages]
   ))
 
 (defn fa-link [class link]
@@ -46,13 +46,13 @@
      [fa-link "fab fa-stripe-s" "https://www.shadertoy.com/user/BackwardsCap"]
      [fa-link "fab fa-twitter" "https://twitter.com/Turmolt"]
      [fa-link "fas fa-envelope" "mailto:skiracer1292@gmail.com"]]
-    [:a {:class "fas fa-tools link" :style {:margin :auto
+    [:a {:class "fas fa-pencil-ruler link" :style {:margin :auto
                                                    :margin-right 5
-                                                   :font-size 30
+                                                   :font-size 28
                                                    :margin-bottom :auto}
          :href "/projects"}
-     [:div {:style {:font-size 8 :text-align :center} :class :f400} "projects"]]
-    [:a {:class "fas fa-pencil-ruler link" :style {:margin-top :auto
+     [:div {:style {:font-size 8 :text-align :center :padding-top 2} :class :f400} "projects"]]
+    [:a {:class "far fa-sticky-note link" :style {:margin-top :auto
                                                    :margin-bot :auto
                                                    :margin-left 10
                                                    :margin-right 5
@@ -83,28 +83,46 @@
   [:div {:style {:width 700
                  :text-align :justify
                  :margin :auto}}
-   [blog/post-preview-panel]])
+   [pages/post-preview-panel]])
 
 (defn projects-panel []
   (set! (. js/document -title) "Posts")
   [:div {:style {:width 700
-                 :text-align :center
+                 :text-align :justify
                  :margin :auto}
          :class :f400}
-   "Under Construction"])
+   [pages/project-preview-panel]])
 
 (defn post-display [current]
-  (let [post (:panel (first (filter #(= (:name (:data current)) (:tag %)) blog/posts)))]
+  (let [post (:panel (first (filter #(= (:name (:data current)) (:tag %)) pages/pages)))]
     (if (nil? post)
-      [:div "hi"]
+      [:div {:style {:text-align :center}} "Your post is in another castle"]
       post)))
+
+(defn footer[]
+  [:div 
+   {:style {:text-align :center
+            :left 0
+            :right 0
+            :bottom 0
+            :width "100%"
+            :font-size 10
+            :margin :auto
+            :padding-top "20px"
+            :padding-bottom "10px"
+            :color "#999999"}
+    :class :f400}
+   "© Sam Gates"])
 
 (defn page []
   (let [current @(rf/subscribe [::subs/page])]
-    [:div {:style {:justify-content :center}}
-     [navbar]
-     (case (:name (:data current))
-       :home [main-panel]
-       :posts [posts-panel]
-       :projects [projects-panel]
-       [post-display current])]))
+    [:div {:style {:justify-content :center
+                   }}
+     [:div {:style {:min-height "95vh"}}
+      [navbar]
+      (case (:name (:data current))
+        :home [main-panel]
+        :posts [posts-panel]
+        :projects [projects-panel]
+        [post-display current])]
+     [footer]]))

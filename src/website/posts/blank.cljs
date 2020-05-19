@@ -4,22 +4,22 @@
   [reagent.dom :as rdom]
   [quil.core :as q]
   [quil.middleware :as m]
-  ["prismjs/prism.js" :as prism]))
+  ["prismjs/prism.js" :as prism]
+  [website.posts.common :refer [canvas]]))
 
 
 (def title "This is the title of the fancy first blog post")
-(def body-preview "The body is very interesting")
+(def body-preview "The preview is very interesting")
+(def date "05/15/2020")
 (def body 
-  [:div {:style {:font-size 17 :line-height 1.3}} "I have made a website! I wanted a place to showcase things that I have worked on and to be able to talk about cool programming stuff, so here we are!"
-   [:pre [:code {:class "language-clojure line-numbers"
-                 :ref (fn [n] (when n (prism/highlightElement n)))}
-          "(defn over-25? [& rest] \n (filter #(> 25 (:age %)) rest)) \n"
-          "(str \"hello world\")"]]])
-
-
+  [:div {:style {:font-size 18 :line-height 1.4}} "I made a website! I wanted a place to showcase things that I have worked on and to be able to talk about cool programming stuff, so here we are!"[:br][:br]"I hope to create posts semi-regularly about things that I find interesting and hopefully some of the information that I share will be of use to someone. If not, at least I had fun along the way, right?"
+  ])
 
 (def tag :blank)
 (def route "blank")
+
+(def w 600)
+(def h 600)
 
 (defn preview []
   [:div {:class "f400"
@@ -35,7 +35,7 @@
     body-preview]])
 
 
-(def numcircles 550)
+(def numcircles 350)
 
 (def palette
   "a palette of colors"
@@ -63,15 +63,15 @@
 (defn draw-circle
   "draws a circle at the position calculated by its angle from start and id"
   [id angle]
-  (q/ellipse (+ (/ 700 2) (* id (Math/cos angle)))
-             (+ (/ 700 2) (* id (Math/sin angle)))
+  (q/ellipse (+ (/ w 2) (/ (* id (Math/cos angle)) 2.0))
+             (+ (/ h 2) (/ (* id (Math/sin angle)) 2.0))
              10 10))
 
 (defn angle
   "calulate the angle based on the delta provided"
   [delta]
   (-> (q/frame-count)
-      (* 0.0001)
+      (* 0.000125)
       (* delta)))
 
 (defn sketch-setup
@@ -79,13 +79,6 @@
   []
   (apply q/background (:background palette))
   (map circle (range 0 numcircles)))
-
-(defn sketch-update
-  "update the state each frame"
-  [state]
-  (map #(assoc %
-               :delta (+ 0.01 (- (:id %)  (:time %))))
-       state))
 
 (defn sketch
   "make art"
@@ -97,32 +90,21 @@
     (draw-circle (:id c)
                  (angle (:delta c)))))
 
-
-(defn canvas []
-  (r/create-class
-   {:component-did-mount
-    (fn [component]
-      (let [node (rdom/dom-node component)]
-        (set! art (q/sketch
-                   :id "circles"
-                   :host node
-                   :setup #'sketch-setup
-                   :update #'sketch-update
-                   :size [700 700]
-                   :draw #'sketch
-                   :middleware [m/fun-mode]))))
-    :component-will-unmount
-    #(q/with-sketch art (q/exit))
-    :render (fn [] [:div])}))
-
 (defn panel []
   (set! (. js/document -title) title)
   [:div
    {:class "f400"
     :style {:width 700 :margin :auto}}
    [:h2 title]
+   [:p {:style {:padding 0 :font-size 10 :margin-top -15}} date]
    [:div body]
-   [canvas]])
+   [:div {:style {:text-align :center}}
+    [canvas {:id "circles" 
+             :setup sketch-setup
+             :update identity
+             :size [w h]
+             :draw sketch
+             :atom art}]]])
 
 
 (def post {:name route
