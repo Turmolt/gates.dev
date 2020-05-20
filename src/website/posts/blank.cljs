@@ -12,7 +12,7 @@
 (def body-preview "The preview is very interesting")
 (def date "05/15/2020")
 (def body 
-  [:div {:style {:font-size 18 :line-height 1.4}} "I made a website! I wanted a place to showcase things that I have worked on and to be able to talk about cool programming stuff, so here we are!"[:br][:br]"I hope to create posts semi-regularly about things that I find interesting and hopefully some of the information that I share will be of use to someone. If not, at least I had fun along the way, right?"
+  [:div {:style {:font-size 18 :line-height 1.4}} "I made a website! I wanted a place to showcase things that I have worked on and to be able to talk about cool programming stuff, so here we are!"[:br][:br]"I hope to create posts semi-regularly about things that I find interesting and maybe some of the information that I share will be of use to someone."[:br][:br]"If not, at least I had fun along the way, right?"
   ])
 
 (def tag :blank)

@@ -96,7 +96,7 @@
 (defn post-display [current]
   (let [post (:panel (first (filter #(= (:name (:data current)) (:tag %)) pages/pages)))]
     (if (nil? post)
-      [:div {:style {:text-align :center}} "Your post is in another castle"]
+      [:div {:style {:text-align :center}} "Your page is in another castle"]
       post)))
 
 (defn footer[]

@@ -63,7 +63,7 @@
 
 (def body  [:div {:style {:font-size 18
                           :line-height 1.4}}
-            "When creating a website, it is important for the developer to have control over the components and their behavior throughout their life cycle. " [link "http://reagent-project.github.io/" "Reagent"] " is a powerful library that allows a ClojureScript developer to define " [link "https://reactjs.org/" "React"] " components using just functions and data. Using a custom reagent class, we are able to easily change the functionality of our component as we see fit." [:br] [:br] "Lets say we want to have syntax highlighting using the popular " [link "https://prismjs.com/" "Prism.js"] ". Since the elements that we create are not found in the DOM when it is initially loaded, they will not be correctly highlighted unless we invoke prism's " [code "language-clojure" "highlightElement"] " function on each node.  It is worth noting that we could accomplish this by subscribing to the " [link "https://reactjs.org/docs/refs-and-the-dom.html" "ref"] " hook and setting it up to invoke prism there."
+            "When creating a website, it is important for the developer to have control over the components and their behavior throughout their life cycle. " [link "http://reagent-project.github.io/" "Reagent"] " is a powerful library that allows a ClojureScript developer to define " [link "https://reactjs.org/" "React"] " components using just functions and data. Using a custom reagent class, we are able to easily change the functionality of our component as we see fit." [:br] [:br] "Lets say we want to have syntax highlighting using the popular " [link "https://prismjs.com/" "Prism.js"] ". Since the elements that we create with Reagent are not found in the DOM when it is initially loaded, they will not be correctly highlighted unless we invoke prism's " [code "language-clojure" "highlightElement"] " function on each node.  It is worth noting that we could accomplish this by subscribing to the " [link "https://reactjs.org/docs/refs-and-the-dom.html" "ref"] " hook and setting it up to invoke prism there."
             [:br] [:br]
             [:pre [code "language-clojure line-numbers"
                    "[:code {:class \"language-clojure\"\n"
@@ -100,15 +100,15 @@
                    "  (r/create-class\n"
                    "   {:component-did-mount\n"
                    "    (fn [component]\n"
-                   "      (let [node (rdom/dom-node component)]\n"
-                   "        (set! art (q/sketch\n"
-                   "                   :id id\n"
-                   "                   :host node\n"
-                   "                   :setup setup\n"
-                   "                   :update update\n"
-                   "                   :size size\n"
-                   "                   :draw draw\n"
-                   "                   :middleware [m/fun-mode]))))\n"
+                   "     (let [node (rdom/dom-node component)]\n"
+                   "      (set! art (q/sketch\n"
+                   "                 :id id\n"
+                   "                 :host node\n"
+                   "                 :setup setup\n"
+                   "                 :update update\n"
+                   "                 :size size\n"
+                   "                 :draw draw\n"
+                   "                 :middleware [m/fun-mode]))))\n"
                    "    :component-will-unmount\n"
                    "    #(q/with-sketch @art (q/exit))\n"
                    "    :render (fn [] [:div])}))"]]
@@ -172,7 +172,7 @@
                      :update sketch-update
                      :draw draw
                      :atom art}]
-            "Exquisite! I hope that this walkthrough has helped you gain a better understanding of how we can utilize the tools that Reagent and React have provided us to bend the web to our will. Remember, with great power comes great responsibility. Now go forth and create!"])
+            "Exquisite! I hope that this walkthrough has helped you gain a better understanding of how we can utilize the tools that Reagent and React have provide us to bend the web to our will. Remember, with great power comes great responsibility. Now go forth and create!"])
 
 
 
