@@ -12,11 +12,72 @@
 (def route "reagent-custom-classes")
 (def date "05/19/2020")
 
+;===============================================================================================
+
+(defn circle [id]
+  {:time (* 0.5 id)
+   :radius (* 3.0 id)})
+
+(defn icon-circle [id]
+  {:time (* 0.6 id)
+   :radius (* 1.5 id)})
+
+(defonce art (atom nil))
+(defonce icon-art (atom nil))
+
+(defn sketch-setup []
+  (apply q/background [255 255 255])
+  (map circle (range 1 7)))
+
+(defn icon-sketch-setup []
+  (apply q/background [255 255 255])
+  (map icon-circle (range 1 7)))
+
+ (defn increase-time [circle]
+   (assoc circle :time (+ 0.05 (:time circle))))
+
+(defn sketch-update [state]
+  (map #(assoc % :time (+ 0.05 (:time %))) state))
+
+(defn get-coords [t scale w h]
+  [(+ (/ w 2.0) (* scale (Math/cos t)))
+   (+ (/ h 2.0) (* scale (Math/sin t)))])
+
+(defn draw-circle
+  [{t :time radius :radius} w h scale]
+  (let [[x y] (get-coords t scale w h)]
+    (q/ellipse x y radius radius)))
+
+(defn draw [state]
+  (apply q/background [255 255 255])
+  (apply q/fill [0 0 0])
+  (doseq [c state]
+    (draw-circle c 700 200 50)))
+ 
+(defn icon-draw [state]
+  (apply q/background [255 255 255])
+  (apply q/fill [0 0 0])
+  (doseq [c state]
+    (draw-circle c 60 60 20)))
+ 
+ (defn icon []
+   [:div {:style {:width 60 :height 60 :margin 10 :float :left}}
+    [canvas {:id "icon-one" 
+             :setup icon-sketch-setup
+             :size [60 60]
+             :update sketch-update
+             :draw icon-draw
+             :atom icon-art}]])
+
+;===============================================================================================
+
+
 (defn preview []
   [:div {:class "f400"
          :style {:border-top "1px solid black"
                  :width "100%"
                  :height 100}}
+   [icon]
    [:h3
     {:style {:margin "15px 0px 0px 0px"}}
     title]
@@ -24,42 +85,6 @@
                 :margin "10px 0 0 0"
                 :font-style "italic"}}
     body-preview]])
-
-
-;===============================================================================================
-
-(def w 700)
-(def h 200)
-
-(defn circle [id]
-  {:time (* 0.5 id)
-   :radius (* 3.0 id)})
-
-(defonce art (atom nil))
-
-(defn sketch-setup []
-  (apply q/background [255 255 255])
-  (map circle (range 1 7)))
-
-(defn sketch-update [state]
-  (map #(assoc % :time (+ 0.05 (:time %))) state))
-
-(defn get-coords [t scale]
-  [(+ (/ w 2.0) (* scale (Math/cos t)))
-   (+ (/ h 2.0) (* scale (Math/sin t)))])
-
-(defn draw-circle
-  [{t :time radius :radius}]
-  (let [[x y] (get-coords t 50)]
-    (q/ellipse x y radius radius)))
-
-(defn draw [state]
-  (apply q/background [255 255 255])
-  (apply q/fill [0 0 0])
-  (doseq [c state]
-    (draw-circle c)))
-
-;===============================================================================================
 
 (def body  [:div {:style {:font-size 18
                           :line-height 1.4}}
@@ -130,9 +155,10 @@
                    "(defn sketch-setup []\n"
                    "  (apply q/background [255 255 255])\n"
                    "  (map circle (range 1 7)))\n\n"
-
+                   "(defn increase-time [circle]\n"
+                   " (assoc circle :time (+ 0.05 (:time circle))))\n\n"
                    "(defn sketch-update [state]\n"
-                   " (map #(assoc % :time (+ 0.05 (:time %))) state))"]]
+                   " (map increase-time state))"]]
             [:br]
             "In the setup we are painting the background white and creating our circles, then in the update function we are increasing the time value that each circle contains. The circles position will be calculated based on its time, so lets create a function that will return an x and y coordinate when passed a time value, and we will add an extra parameter to scale things up."
             [:br] [:br]
@@ -168,7 +194,7 @@
             
             [canvas {:id "circles"
                      :setup sketch-setup
-                     :size [w h]
+                     :size [700 200]
                      :update sketch-update
                      :draw draw
                      :atom art}]

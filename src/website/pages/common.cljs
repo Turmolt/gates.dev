@@ -5,6 +5,18 @@
             [quil.core :as q]
             [quil.middleware :as m]))
 
+(defn iframe
+  [{src :src name :name}]
+  [:iframe {:src src
+            :name name
+            :scrolling :no
+            :width "960px"
+            :height "600px"
+            :style {:border "0px none"
+                    :margin-left -130
+                    :margin-top 5
+                    :margin-bottom 10}}])
+
 (defn canvas
   [{id :id setup :setup update :update size :size draw :draw art :atom}]
   (r/create-class

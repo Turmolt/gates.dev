@@ -5,15 +5,22 @@
    [quil.core :as q]
    [quil.middleware :as m]
    ["prismjs/prism.js" :as prism]
-   [website.pages.common :refer [link]]))
+   [website.pages.common :refer [link iframe]]))
 
 
 (def title "The Gardener")
-(def body-preview "A Ludum Dare 44 Entry")
-(def date "05/15/2020")
+(def body-preview "A Stardew Valley clone created for Ludum Dare 44")
+(def date "April 2019")
+
+(defn icon []
+  [:img {:src "/The Gardener/Gardener.png" :style {:width 60 :height 60 :margin 10 :float :left}}])
+
 (def body
   [:div {:style {:font-size 18 :line-height 1.4}}
-   "body goes here"])
+   [iframe {:src "The Gardener/index.html"
+            :name "The Gardener"}]
+   [:br]
+   "The Gardener is a game that I made in April 2019 for" [link "https://ldjam.com/events/ludum-dare/44/the-gardener" "Ludum Dare 44"] ". The theme of the jam was 'your life is currency' so I made a Stardew Valley clone where the farmer uses his life force to grow and sell body parts." [:br] [:br] "You can find the soruce code on my " [link "https://github.com/Turmolt/TheGardener" "GitHub repository"] "."])
 
 (def tag :gardener)
 (def route "gardener")
@@ -23,6 +30,7 @@
          :style {:border-top "1px solid black"
                  :width "100%"
                  :height 100}}
+   [icon]
    [:h3
     {:style {:margin "15px 0px 0px 0px"}}
     title]

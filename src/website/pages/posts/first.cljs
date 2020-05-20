@@ -20,11 +20,44 @@
 (def w 600)
 (def h 600)
 
+(defonce icon-art (atom nil))
+
+(defn icon-circle [id]
+  (* (/ 3.1415927 3.0) id))
+
+(defn icon-sketch-setup []
+  (apply q/background [255 255 255])
+   (map icon-circle (range 6)))
+
+(defn icon-sketch-update [circles]
+  (map #(+ 0.05 %) circles))
+
+(defn icon-center [t]
+  [(+ 30 (* 20 (Math/cos t))) (+ 30 (* 20 (Math/sin t)))])
+
+(defn icon-draw [circles]
+  (apply q/background [255 255 255])
+  (q/ellipse 30 30 10 10)
+  (doseq [t circles]
+    (let [[x y] (icon-center t)]
+      (q/line [x y] [(+ 15 (/ x 2)) (- 30 (/ y 2))]))))
+
+ (defn icon []
+   [:div {:style {:width 60 :height 60 :margin 10 :float :left}}
+    [canvas {:id "icon-one"
+             :setup icon-sketch-setup
+             :size [60 60]
+             :update icon-sketch-update
+             :draw icon-draw
+             :atom icon-art}]])
+
+
 (defn preview []
   [:div {:class "f400"
          :style {:border-top "1px solid black"
                  :width "100%"
                  :height 100}}
+   [icon]
    [:h3
     {:style {:margin "15px 0px 0px 0px"}}
     title]
