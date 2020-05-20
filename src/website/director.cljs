@@ -1,11 +1,12 @@
-(ns website.pages
+(ns website.director
  (:require [re-frame.core :as rf]
-           [website.posts.blank :as p0]
-           [website.posts.one :as p1]))
+           [website.pages.posts.first :as p0]
+           [website.pages.posts.one :as p1]
+           [website.pages.projects.gardener :as gardener]))
 
 (def posts [p1/post p0/post])
 
-(def projects [p1/post])
+(def projects [gardener/post])
 
 (def pages (flatten (conj posts projects)))
 

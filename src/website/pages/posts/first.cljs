@@ -1,19 +1,18 @@
-(ns website.posts.blank
- (:require 
-  [reagent.core :as r]
-  [reagent.dom :as rdom]
-  [quil.core :as q]
-  [quil.middleware :as m]
-  ["prismjs/prism.js" :as prism]
-  [website.posts.common :refer [canvas]]))
+(ns website.pages.posts.first
+  (:require
+   [reagent.core :as r]
+   [reagent.dom :as rdom]
+   [quil.core :as q]
+   [quil.middleware :as m]
+   ["prismjs/prism.js" :as prism]
+   [website.pages.common :refer [canvas]]))
 
 
 (def title "This is the title of the fancy first blog post")
 (def body-preview "The preview is very interesting")
 (def date "05/15/2020")
-(def body 
-  [:div {:style {:font-size 18 :line-height 1.4}} "I made a website! I wanted a place to showcase things that I have worked on and to be able to talk about cool programming stuff, so here we are!"[:br][:br]"I hope to create posts semi-regularly about things that I find interesting and maybe some of the information that I share will be of use to someone."[:br][:br]"If not, at least I had fun along the way, right?"
-  ])
+(def body
+  [:div {:style {:font-size 18 :line-height 1.4}} "I made a website! I wanted a place to showcase things that I have worked on and to be able to talk about cool programming stuff, so here we are!" [:br] [:br] "I hope to create posts semi-regularly about things that I find interesting and maybe some of the information that I share will be of use to someone." [:br] [:br] "If not, at least I had fun along the way, right?"])
 
 (def tag :blank)
 (def route "blank")
@@ -27,7 +26,7 @@
                  :width "100%"
                  :height 100}}
    [:h3
-   {:style {:margin "15px 0px 0px 0px"}} 
+    {:style {:margin "15px 0px 0px 0px"}}
     title]
    [:p {:style {:font-size 15
                 :margin "10px 0 0 0"
@@ -99,7 +98,7 @@
    [:p {:style {:padding 0 :font-size 10 :margin-top -15}} date]
    [:div body]
    [:div {:style {:text-align :center}}
-    [canvas {:id "circles" 
+    [canvas {:id "circles"
              :setup sketch-setup
              :update identity
              :size [w h]

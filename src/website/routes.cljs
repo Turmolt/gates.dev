@@ -4,7 +4,7 @@
            [reitit.frontend :as rf]
            [reitit.coercion.spec :as rss]
            [reitit.frontend.easy :as rfe]
-           [website.pages :as pages]))
+           [website.director :as director]))
 
 (def routes
   ["/"
@@ -22,7 +22,7 @@
      {:name :projects
       :controllers [{:start (fn [& params] (js/console.log "Projects"))
                      :stop (fn [& params] (js/console.log "Leaving Projects"))}]}]]
-   (for [post pages/posts]
+   (for [post director/pages]
      [(:name post)
       {:name (:tag post)
        :controllers [{:start (fn [& params] (js/console.log (:name post)))

@@ -1,10 +1,10 @@
-(ns website.posts.one
+(ns website.pages.posts.one
  (:require 
   [reagent.core :as r]
   [reagent.dom :as rdom]
   [quil.core :as q]
   [quil.middleware :as m]
-  [website.posts.common :refer [link code canvas]]))
+  [website.pages.common :refer [link code canvas]]))
 
 (def title "Creating and using custom reagent classes")
 (def body-preview "The basics of creating a react component using reagent")

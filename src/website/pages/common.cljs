@@ -1,4 +1,4 @@
-(ns website.posts.common
+(ns website.pages.common
   (:require ["prismjs/prism.js" :as prism]
             [reagent.core :as r]
             [reagent.dom :as rdom]

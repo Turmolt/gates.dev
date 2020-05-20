@@ -2,7 +2,7 @@
  (:require
   [re-frame.core :as rf]
   [website.subs :as subs]
-  [website.pages :as pages]
+  [website.director :as pages]
   ))
 
 (defn fa-link [class link]
