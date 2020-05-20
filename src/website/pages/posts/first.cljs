@@ -51,7 +51,6 @@
              :draw icon-draw
              :atom icon-art}]])
 
-
 (defn preview []
   [:div {:class "f400"
          :style {:border-top "1px solid black"

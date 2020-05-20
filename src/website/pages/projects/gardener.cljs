@@ -20,7 +20,7 @@
    [iframe {:src "The Gardener/index.html"
             :name "The Gardener"}]
    [:br]
-   "The Gardener is a game that I made in April 2019 for" [link "https://ldjam.com/events/ludum-dare/44/the-gardener" "Ludum Dare 44"] ". The theme of the jam was 'your life is currency' so I made a Stardew Valley clone where the farmer uses his life force to grow and sell body parts." [:br] [:br] "You can find the soruce code on my " [link "https://github.com/Turmolt/TheGardener" "GitHub repository"] "."])
+   "The Gardener is a game that I made in April 2019 for" [link "https://ldjam.com/events/ludum-dare/44/the-gardener" "Ludum Dare 44"] ". The theme of the jam was 'your life is currency' so I made a Stardew Valley clone where the farmer uses his life force to grow and sell body parts." [:br] [:br] "You can find the source code on my " [link "https://github.com/Turmolt/TheGardener" "GitHub repository"] "."])
 
 (def tag :gardener)
 (def route "gardener")
