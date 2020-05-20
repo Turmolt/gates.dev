@@ -7,7 +7,6 @@ node_modules/
 classes/
 checkouts/
 cljs-runtime/
-js/
 !src/main/shadow/js
 !packages/launcher/web/css
 /public/assets
