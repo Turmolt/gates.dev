@@ -12,7 +12,7 @@
 (def pages (flatten (conj posts projects)))
 
 (defn post-preview [post]
-  [:a {:href (str "#/" (:name post))
+  [:a {:href (str "/" (:name post))
        :class "link"}
    [(post :preview)]])
 

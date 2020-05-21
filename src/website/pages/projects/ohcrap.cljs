@@ -13,11 +13,11 @@
 (def date "April 2020")
 
 (defn icon []
-  [:img {:src "/website/public/resources/Oh Crap!/Oh Crap Logo.png" :style {:width 60 :height 60 :margin 10 :float :left}}])
+  [:img {:src "/turmolt.github.io/public/resources/Oh Crap!/Oh Crap Logo.png" :style {:width 60 :height 60 :margin 10 :float :left}}])
 
 (def body
   [:div {:style {:font-size 18 :line-height 1.4}}
-   [iframe {:src "/website/public/resources/Oh Crap!/index.html"
+   [iframe {:src "/turmolt.github.io/public/resources/Oh Crap!/index.html"
             :name "Oh Crap!"}]
    [:br]
    "In “Oh Crap!” you will race against the clock to keep everyone alive! You are a top surgeon operating on your wife’s mother’s best friend and you can’t afford to slip up! Your uncle’s baby has gotten loose in his house and you have to make sure it doesn’t get into dangerous things! You are going for the sickest grind and everybody’s watching, you better not fall!"
