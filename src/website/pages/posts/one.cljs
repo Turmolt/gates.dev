@@ -9,7 +9,7 @@
 (def title "Creating and using custom reagent classes")
 (def body-preview "The basics of creating a react component using reagent")
 (def tag :one)
-(def route "/reagent-custom-classes")
+(def route "reagent-custom-classes")
 (def date "05/19/2020")
 
 ;===============================================================================================

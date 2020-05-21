@@ -32,7 +32,7 @@
                  :font-size 35
                  :font-weight 400
                  :font-family "'Lato', sans-serif"}
-         :href "/"
+         :href "#/"
          :class :name} "Sam Gates"]
     [:div
      {:class "navbar"

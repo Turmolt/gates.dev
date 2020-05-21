@@ -26,7 +26,7 @@
    "Oh Crap! is a game made by myself and " [link "https://jons.website" "Jon Cole"] " in April 2020 for " [link "https://ldjam.com/events/ludum-dare/46/oh-crap" "Ludum Dare 46"] ". The theme of the jam was 'keep it alive' so we decided to make a series of minigames that the player would play and attempt to keep their streak alive." [:br] [:br] "You can find the source code on my " [link "https://github.com/Turmolt/ludum-dare-46" "GitHub repository"] "."])
 
 (def tag :ohcrap)
-(def route "/oh-crap")
+(def route "oh-crap")
 
 (defn preview []
   [:div {:class "f400"
