@@ -13,7 +13,7 @@
 (def date "April 2020")
 
 (defn icon []
-  [:img {:src "/turmolt.github.io/public/resources/Oh Crap!/Oh Crap Logo.png" :style {:width 60 :height 60 :margin 10 :float :left}}])
+  [:img {:src "/turmolt.github.io/public/resources/Oh Crap!/Oh Crap Logo.png" :style {:width 60 :height 60 :margin 10 :margin-top 20 :float :left}}])
 
 (def body
   [:div {:style {:font-size 18 :line-height 1.4}}
@@ -32,15 +32,16 @@
   [:div {:class "f400"
          :style {:border-top "1px solid black"
                  :width "100%"
-                 :height 100}}
+                 :height 105}}
    [icon]
-   [:h3
-    {:style {:margin "15px 0px 0px 0px"}}
-    title]
-   [:p {:style {:font-size 15
-                :margin "10px 0 0 0"
-                :font-style "italic"}}
-    body-preview]])
+   [:div {:style {:margin-top 25}}
+    [:h3
+     {:style {:margin "15px 0px 0px 0px"}}
+     title]
+    [:p {:style {:font-size 15
+                 :margin "10px 0 0 0"
+                 :font-style "italic"}}
+     body-preview]]])
 
 
 (defn panel []
