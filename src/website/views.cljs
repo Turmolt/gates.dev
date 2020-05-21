@@ -46,18 +46,22 @@
      [fa-link "fab fa-stripe-s" "https://www.shadertoy.com/user/BackwardsCap"]
      [fa-link "fab fa-twitter" "https://twitter.com/Turmolt"]
      [fa-link "fas fa-envelope" "mailto:skiracer1292@gmail.com"]]
-    [:a {:class "fas fa-pencil-ruler link" :style {:margin :auto
-                                                   :margin-right 5
-                                                   :font-size 28
-                                                   :margin-bottom :auto}
+    [:a {:class "fas fa-pencil-ruler link"
+         :style {:margin :auto
+                 :margin-right 5
+                 :font-size 28
+                 :margin-bottom :auto}
          :href "/projects"}
-     [:div {:style {:font-size 8 :text-align :center :padding-top 2} :class :f400} "projects"]]
-    [:a {:class "far fa-sticky-note link" :style {:margin-top :auto
-                                                   :margin-bot :auto
-                                                   :margin-left 10
-                                                   :margin-right 5
-                                                   :font-size 30
-                                                   :margin-bottom :auto}
+     [:div {:style {:font-size 8 
+                    :text-align :center 
+                    :padding-top 2} :class :f400} "projects"]]
+    [:a {:class "far fa-sticky-note link"
+         :style {:margin-top :auto
+                 :margin-bot :auto
+                 :margin-left 10
+                 :margin-right 5
+                 :font-size 30
+                 :margin-bottom :auto}
          :href "/posts"}
      [:div {:style {:font-size 8 :text-align :center} :class :f400} "posts"]]]])
 

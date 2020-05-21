@@ -9,7 +9,7 @@
 (def title "Creating and using custom reagent classes")
 (def body-preview "The basics of creating a react component using reagent")
 (def tag :one)
-(def route "reagent-custom-classes")
+(def route "/reagent-custom-classes")
 (def date "05/19/2020")
 
 ;===============================================================================================
@@ -98,7 +98,7 @@
              [code "language-clojure" "(+ 1 1)"]]
 
             [:br]
-            "In this approach we are checking that the element is not null, and then invoking prism on it once we know that we have a node. This is a fine way to do this, but we are subscribing to both the mounting and unmounting of our component and have to catch the unmounting callback and ignore it. In order to avoid the extra subscription, we can use reagent's " [code "language-clojure" "create-class"] " function and just hook into what we need; the " [code "language-clojure" ":component-did-mount"] " and " [code "language-clojure" ":render"] " callbacks."
+            "In this approach we are checking that the element is not null, and then we invoke Prism once we know that we have a node. This is a fine way to do this, but we are subscribing to both the mounting and unmounting of our component and have to catch the unmounting callback and ignore it. In order to avoid the extra subscription, we can use reagent's " [code "language-clojure" "create-class"] " function and just hook into what we need; the " [code "language-clojure" ":component-did-mount"] " and " [code "language-clojure" ":render"] " callbacks."
             [:br] [:br]
 
             [:pre [code "language-clojure line-numbers"
@@ -110,7 +110,7 @@
                    "       (prism/highlightElement node)))\n"
                    "    :render (fn [] [:code {:class features} text])}))"]]
             [:br]
-            "When the component is created and mounted, our code will be executed and will apply the correct styling to our code block. We can now render the component by passing the prism features and some code to our custom reagent class. We need to include the language tags and the styling features that we want enabled when prism acts on it."
+            "When the component is mounted our code will be executed and Prism will apply the correct styling to our code block. We can now render the component by passing the Prism features and some code to our custom reagent class. We need to include the language tags and the styling features that we want enabled when Prism acts on it."
             [:br] [:br]
             [:div {:style {:text-align :center}} [:pre [code "language-clojure line-numbers" "[code \"language-clojure\" \"(+ 1 1)\"]"]]]
             [:br]
