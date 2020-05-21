@@ -28,10 +28,8 @@
   (rf/router
    routes))
 
-(rf/match-by-path router "/projects/")
-
 (defn init-routes! []
   (rfe/start!
    router
    on-navigate
-   {:use-fragment false}))
+   {:use-fragment true}))

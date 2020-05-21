@@ -51,7 +51,7 @@
                  :margin-right 5
                  :font-size 28
                  :margin-bottom :auto}
-         :href "/projects"}
+         :href "#/projects"}
      [:div {:style {:font-size 8 
                     :text-align :center 
                     :padding-top 2} :class :f400} "projects"]]
@@ -62,7 +62,7 @@
                  :margin-right 5
                  :font-size 30
                  :margin-bottom :auto}
-         :href "/posts"}
+         :href "#/posts"}
      [:div {:style {:font-size 8 :text-align :center} :class :f400} "posts"]]]])
 
 (defn main-panel []
