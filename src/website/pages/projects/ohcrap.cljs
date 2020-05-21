@@ -32,7 +32,7 @@
   [:div {:class "f400"
          :style {:border-top "1px solid black"
                  :width "100%"
-                 :height 105}}
+                 :height 100}}
    [icon]
    [:div {:style {:margin-top 25}}
     [:h3

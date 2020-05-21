@@ -45,7 +45,7 @@
      [fa-link "fab fa-github" "https://github.com/Turmolt"]
      [fa-link "fab fa-stripe-s" "https://www.shadertoy.com/user/BackwardsCap"]
      [fa-link "fab fa-twitter" "https://twitter.com/Turmolt"]
-     [fa-link "fas fa-envelope" "mailto:skiracer1292@gmail.com"]]
+     [fa-link "fas fa-envelope" "mailto:sam@gates.dev"]]
     [:a {:class "fas fa-pencil-ruler link"
          :style {:margin :auto
                  :margin-right 5
@@ -79,7 +79,7 @@
     [link "https://umaine.edu/vemi/" "Virtual Environment and Multimodal Interaction laboratory"]
     " at the University of Maine where I helped create projects that pushed the limits of human-computer interaction. "
     "I enjoy spending my free time making games, tinkering with shaders, clojure, and taking my dog on adventures."]
-   [:p "If you would like to partner up and create something awesome " [link "mailto:skiracer1292@gmail.com" "contact me"] " and we can make it happen."]])
+   [:p "If you would like to partner up and create something awesome " [link "mailto:sam@gates.dev" "contact me"] " and we can make it happen."]])
 
 
 (defn posts-panel []
