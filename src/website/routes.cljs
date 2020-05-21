@@ -7,12 +7,13 @@
            [website.director :as director]))
 
 (def routes
-  [["/"
+  ["/"
+   [""
     {:name :home}]
-   ["/posts"
+   ["posts"
     [""
      {:name :posts}]]
-   ["/projects"
+   ["projects"
     [""
      {:name :projects}]]
    (for [post director/pages]
