@@ -25,49 +25,38 @@
                  :background-color "#DFDFDF"
                  :border-bottom "1px solid #424242"}}
    [:div {:style {:width 700
+                  :padding-left 15
+                  :padding-right 15
                   :display :flex}}
     [:a {:style {:margin-top :auto
                  :color :black
-                 :margin-bottom :auto
-                 :font-size 35
+                 :margin-bottom 7
                  :font-weight 400
                  :font-family "'Lato', sans-serif"}
          :href "#/"
-         :class :name} "Sam Gates"]
+         :class "name"} "Sam Gates"]
     [:div
-     {:class "navbar"
-      :style {:padding-left 3
-              :margin :auto
-              :color :black
-              :margin-left 10
-              :margin-bottom 13}}
+     {:class "navbar"}
      [fa-link "fab fa-linkedin-in" "https://www.linkedin.com/in/samg8s/"]
      [fa-link "fab fa-github" "https://github.com/Turmolt"]
      [fa-link "fab fa-stripe-s" "https://www.shadertoy.com/user/BackwardsCap"]
      [fa-link "fab fa-twitter" "https://twitter.com/Turmolt"]
      [fa-link "fas fa-envelope" "mailto:sam@gates.dev"]]
-    [:a {:class "fas fa-pencil-ruler link"
-         :style {:margin :auto
-                 :margin-right 5
-                 :font-size 28
-                 :margin-bottom :auto}
+    [:a {:class "fas fa-pencil-ruler link p28"
+
          :href "#/projects"}
      [:div {:style {:font-size 8 
                     :text-align :center 
                     :padding-top 2} :class :f400} "projects"]]
-    [:a {:class "far fa-sticky-note link"
-         :style {:margin-top :auto
-                 :margin-bot :auto
-                 :margin-left 10
-                 :margin-right 5
-                 :font-size 30
-                 :margin-bottom :auto}
+    [:a {:class "far fa-sticky-note link p30"
+
          :href "#/posts"}
      [:div {:style {:font-size 8 :text-align :center} :class :f400} "posts"]]]])
 
 (defn main-panel []
   (set! (. js/document -title) "Home")
-  [:div {:style {:width 700
+  [:div {:style {:max-width 700
+                 :padding 15
                  :font-size 18
                  :line-height 1.4
                  :text-align :justify
@@ -82,20 +71,15 @@
    [:p "If you would like to partner up and create something awesome " [link "mailto:sam@gates.dev" "contact me"] " and we can make it happen."]])
 
 
-(defn posts-panel []
-  (set! (. js/document -title) "Posts")
-  [:div {:style {:width 700
-                 :text-align :justify
-                 :margin :auto}}
-   [pages/post-preview-panel]])
 
-(defn projects-panel []
-  (set! (. js/document -title) "Posts")
-  [:div {:style {:width 700
+(defn display-pages [title posts]
+  (set! (. js/document -title) title)
+  [:div {:style {:max-width 700
                  :text-align :justify
                  :margin :auto}
          :class :f400}
-   [pages/project-preview-panel]])
+   [pages/preview-panel title posts]])
+
 
 (defn post-display [current]
   (let [post (:panel (first (filter #(= (:name (:data current)) (:tag %)) pages/pages)))]
@@ -112,10 +96,10 @@
             :width "100%"
             :font-size 10
             :margin :auto
-            :padding-top "20px"
+            :padding-top "10px"
             :padding-bottom "10px"
             :color "#999999"}
-    :class :f400}
+    :class "f400"}
    "© Sam Gates"])
 
 (defn page []
@@ -126,7 +110,7 @@
       [navbar]
       (case (:name (:data current))
         :home [main-panel]
-        :posts [posts-panel]
-        :projects [projects-panel]
+        :posts [display-pages "Posts" pages/posts]
+        :projects [display-pages "Projects" pages/projects]
         [post-display current])]
      [footer]]))

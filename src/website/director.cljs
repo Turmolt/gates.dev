@@ -11,37 +11,48 @@
 
 (def pages (flatten (conj posts projects)))
 
+(defn preview [{icon :icon title :title body-preview :preview}]
+  [:div {:style {:padding-left 15 :padding-right 15}}
+   [:div {:class "f400"
+          :style {:border-top "1px solid black"
+                  :padding-left 10;
+                  :padding-right 10;
+                  :display :flex
+                  :min-height 100
+                  :padding-bottom 15}}
+    [:div {:style {:height "100%"
+                   :max-width 80
+                   :margin-top :auto
+                   :margin-bottom :auto}} [icon]]
+    [:div {:style {:margin-top :auto
+                   :margin-bottom :auto}}
+     [:h3
+      {:style {:margin "15px 0px 0px 0px"}}
+      title]
+     [:p {:style {:font-size 15
+                  :margin "10px 0 0 0"
+                  :font-style "italic"}}
+      body-preview]]]])
+
 (defn post-preview [post]
   [:a {:href (str "#/" (:name post))
        :class "link"}
-   [(post :preview)]])
+   [preview post]])
 
-(defn post-preview-panel []
+(defn preview-panel [title entries]
   [:div {:style {:display :inline-block
                  :width "100%"}}
    [:h1 {:class "f400"
          :style {:font-size 23
                  :text-align-last "center"}} 
-    "Posts"]
+    title]
    [:div
-    (for [x posts] [post-preview x])]])
+    (for [x entries] [post-preview x])]])
 
 ;projects to showcase:
+;dynamic animation of vehicles in aapex race
 ;ice age?
 ;defuser
 ;oh crap!
 ;army of damnation
 ;the gardener
-
-(defn project-preview-panel []
-  [:div {:style {:display :inline-block
-                 :width "100%"}}
-   [:h1 {:class "f400"
-         :style {:font-size 23
-                 :text-align-last "center"}} 
-    "Projects"]
-   [:div
-    (for [x projects] [post-preview x])]])
-
-(defn panel []
-  [post-preview-panel])

@@ -5,6 +5,8 @@
             [quil.core :as q]
             [quil.middleware :as m]))
 
+(def mobile (> 960 (.-width js/screen)))
+
 (defn iframe
   [{src :src name :name}]
   [:iframe {:src src

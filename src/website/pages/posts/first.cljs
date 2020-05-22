@@ -12,13 +12,14 @@
 (def body-preview "The preview is very interesting")
 (def date "05/15/2020")
 (def body
-  [:div {:style {:font-size 18 :line-height 1.4}} "I made a website! I wanted a place to showcase things that I have worked on and to be able to talk about cool programming stuff, so here we are!" [:br] [:br] "I hope to create posts semi-regularly about things that I find interesting and maybe some of the information that I share will be of use to someone." [:br] [:br] "If not, at least I had fun along the way, right?"])
+  [:div {:class :about} 
+   "I made a website! I wanted a place to showcase things that I have worked on and to be able to talk about cool programming stuff, so here we are!" [:br] [:br] "I hope to create posts semi-regularly about things that I find interesting and maybe some of the information that I share will be of use to someone." [:br] [:br] "If not, at least I had fun along the way, right?"])
 
 (def tag :first)
 (def route "first")
 
-(def w 600)
-(def h 600)
+(def w 360)
+(def h 440)
 
 (defonce icon-art (atom nil))
 
@@ -126,11 +127,12 @@
   (set! (. js/document -title) title)
   [:div
    {:class "f400"
-    :style {:width 700 :margin :auto}}
+    :style {:max-width 700 :margin :auto
+            :padding 15}}
    [:h2 title]
-   [:p {:style {:padding 0 :font-size 10 :margin-top -15}} date]
+   [:p {:class :date} date]
    [:div body]
-   [:div {:style {:text-align :center}}
+   [:div {:style {:text-align :center :margin-left -15}}
     [canvas {:id "circles"
              :setup sketch-setup
              :update identity
@@ -140,6 +142,8 @@
 
 
 (def post {:name route
-           :preview preview
+           :icon icon
+           :title title
+           :preview body-preview
            :panel panel
            :tag tag})

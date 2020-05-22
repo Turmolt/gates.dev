@@ -14,6 +14,8 @@
 
 ;===============================================================================================
 
+(def w 200)
+
 (defn circle [id]
   {:time (* 0.5 id)
    :radius (* 3.0 id)})
@@ -52,7 +54,7 @@
   (apply q/background [255 255 255])
   (apply q/fill [0 0 0])
   (doseq [c state]
-    (draw-circle c 700 200 50)))
+    (draw-circle c w 200 50)))
  
 (defn icon-draw [state]
   (apply q/background [255 255 255])
@@ -70,22 +72,6 @@
              :atom icon-art}]])
 
 ;===============================================================================================
-
-
-(defn preview []
-  [:div {:class "f400"
-         :style {:border-top "1px solid black"
-                 :width "100%"
-                 :height 100}}
-   [icon]
-   [:div {:style {:margin-top 25}}
-    [:h3
-     {:style {:margin "15px 0px 0px 0px"}}
-     title]
-    [:p {:style {:font-size 15
-                 :margin "10px 0 0 0"
-                 :font-style "italic"}}
-     body-preview]]])
 
 (def body  [:div {:style {:font-size 18
                           :line-height 1.4}}
@@ -192,28 +178,28 @@
                    "         :update sketch-update\n"
                    "         :draw draw\n"
                    "         :atom art}]"]]
-            
-            [canvas {:id "circles"
-                     :setup sketch-setup
-                     :size [700 200]
-                     :update sketch-update
-                     :draw draw
-                     :atom art}]
+            [:div {:style {:text-align :center}}
+             [canvas {:id "circles"
+                      :setup sketch-setup
+                      :size [w 200]
+                      :update sketch-update
+                      :draw draw
+                      :atom art}]]
             "Exquisite! I hope that this walkthrough has helped you gain a better understanding of how we can utilize the tools that Reagent and React have provide us to bend the web to our will. Remember, with great power comes great responsibility. Now go forth and create!"])
-
-
 
 (defn panel []
   (set! (. js/document -title) title)
   [:div
    {:class "f400"
-    :style {:width 700 :margin :auto}}
+    :style {:max-width 700 :margin :auto
+            :padding 15}}
    [:h2 title]
    [:p {:style {:padding 0 :font-size 10 :margin-top -15}} date]
    [:div body]])
 
-(def post
-  {:name route
-   :preview preview
-   :panel panel
-   :tag tag})
+(def post {:name route
+           :icon icon
+           :title title
+           :preview body-preview
+           :panel panel
+           :tag tag})
