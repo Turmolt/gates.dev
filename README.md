@@ -1,4 +1,4 @@
-# [gates.dev](gates.dev)
+# [gates.dev](https://gates.dev)
 
 ## Run
 
