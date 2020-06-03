@@ -1,28 +1,13 @@
-# {{name}}
+# [gates.dev](https://gates.dev)
 
 ## Run
 
 ``` shell
-yarn install
-
-yarn watch
-```
-
-## Clean
-
-``` shell
-yarn clean
+npx shadow-cljs watch app
 ```
 
 ## Release
 
 ``` shell
-yarn release
+npx shadow-cljs release app
 ```
-
-## License
-
-Copyright © 2017 FIXME
-
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
