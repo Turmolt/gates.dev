@@ -3,20 +3,21 @@
            [website.pages.posts.first :as p0]
            [website.pages.posts.one :as p1]
            [website.pages.projects.gardener :as gardener]
-           [website.pages.projects.ohcrap :as ohcrap]))
+           [website.pages.projects.ohcrap :as ohcrap]
+           [website.pages.projects.vvc :as vvc]
+           [website.pages.projects.usopen :as usopen]
+           ))
 
 (def posts [p1/post p0/post])
 
-(def projects [ohcrap/post gardener/post])
+(def projects [ohcrap/post usopen/post vvc/post gardener/post])
 
 (def pages (flatten (conj posts projects)))
 
 (defn preview [{icon :icon title :title body-preview :preview}]
-  [:div {:style {:padding-left 15 :padding-right 15}}
-   [:div {:class "f400"
+  [:div {:class :preview}
+   [:div {:class "f400 preview"
           :style {:border-top "1px solid black"
-                  :padding-left 10;
-                  :padding-right 10;
                   :display :flex
                   :min-height 100
                   :padding-bottom 15}}
@@ -35,7 +36,7 @@
       body-preview]]]])
 
 (defn post-preview [post]
-  [:a {:href (str "#/" (:name post))
+  [:a {:href (str (:route post))
        :class "link"}
    [preview post]])
 

@@ -142,6 +142,7 @@
 
 
 (def post {:name route
+           :route (str "#/" route)
            :icon icon
            :title title
            :preview body-preview

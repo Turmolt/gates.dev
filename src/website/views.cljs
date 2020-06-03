@@ -24,10 +24,7 @@
                  :font-size 12
                  :background-color "#DFDFDF"
                  :border-bottom "1px solid #424242"}}
-   [:div {:style {:width 700
-                  :padding-left 15
-                  :padding-right 15
-                  :display :flex}}
+   [:div {:class :header}
     [:a {:style {:margin-top :auto
                  :color :black
                  :margin-bottom 7

@@ -50,6 +50,18 @@
     color: #999999;
 }
 
+.preview
+{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.header{
+    width: 700px;
+    padding-left: 15px;
+    padding-right: 0px;
+    display: flex;
+}
 
 .p28{
     font-size: 26px;        
@@ -75,12 +87,27 @@
     margin-top: auto;
 }
 
-@media (min-width: 400px){
+@media (min-width: 500px){
+
+
+    .header{
+        width: 710px;
+        padding-left: 8px;
+        padding-right: 0px;
+        display: flex;
+    }
+    
     .navbar{
         padding-left: 3px;
         margin-bottom: 10px;
         margin-left: 3px;
         margin-top: auto;
+    }
+
+    .preview
+    {
+        padding-left: 0px;
+        padding-right: 0px;
     }
 
     .p28{
