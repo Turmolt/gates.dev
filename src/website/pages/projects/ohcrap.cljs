@@ -19,8 +19,9 @@
   [:div {:style {:font-size 18 :line-height 1.4}}
    (if mobile
      [:div [:br] "Come back on a computer to play it!" [:br] [:br]] 
-     [iframe {:src "/turmolt.github.io/public/resources/Oh Crap!/index.html"
-              :name "Oh Crap!"}])
+     [:div [iframe {:src "/turmolt.github.io/public/resources/Oh Crap!/index.html"
+                    :name "Oh Crap!"}]
+      [:div {:class "width-warning"} "Please increase your browser's width to at least 960px for the best experience."]])
    [:br]
    "In “Oh Crap!” you will race against the clock to keep everyone alive! You are a top surgeon operating on your wife’s mother’s best friend and you can’t afford to slip up! Your uncle’s baby has gotten loose in his house and you have to make sure it doesn’t get into dangerous things! You are going for the sickest grind and everybody’s watching, you better not fall!"
    [:br]

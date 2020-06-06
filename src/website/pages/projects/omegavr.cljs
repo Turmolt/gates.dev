@@ -18,10 +18,8 @@
 
 (def body
   [:div {:style {:font-size 18 :line-height 1.4}}
-   (let [w (if (> width 960) 960 (- width 15))
-         h (* w 0.625)]
-     [iframe {:src "https://www.youtube.com/embed/R3st99Iy6Nw"
-              :name "Omega VR"}])
+   [iframe {:src "https://www.youtube.com/embed/R3st99Iy6Nw"
+            :name "Omega VR"}]
    [:br]
    [:div {:style {:text-align :center}}
     "Click and drag to look around!"] [:br]

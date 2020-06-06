@@ -92,11 +92,18 @@
     height: 340px;
 }
 
+
+.width-warning{text-align: center;}
+
 @media (min-width: 960px){
     .frame{
         width: 960px;
         height: 600px;
         margin-left: -130px;
+    }
+
+    .width-warning{
+        display: none;
     }
 }
 

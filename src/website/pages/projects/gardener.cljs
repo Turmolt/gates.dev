@@ -19,8 +19,9 @@
   [:div {:style {:font-size 18 :line-height 1.4}}
    (if mobile 
      [:div [:br]"Come back on a computer to play it!" [:br][:br]]
-     [iframe {:src "/turmolt.github.io/public/resources/The Gardener/index.html"
-              :name "The Gardener"}])
+     [:div [iframe {:src "/turmolt.github.io/public/resources/The Gardener/index.html"
+                    :name "The Gardener"}]
+      [:div {:class "width-warning"}"Please increase your browser's width to at least 960px for the best experience."]])
    [:br]
    "The Gardener is a game that I made in April 2019 for" [link "https://ldjam.com/events/ludum-dare/44/the-gardener" "Ludum Dare 44"] ". The theme of the jam was 'your life is currency' so I made a Stardew Valley clone where the farmer uses his life force to grow and sell body parts." [:br] [:br] "You can find the source code on my " [link "https://github.com/Turmolt/TheGardener" "GitHub repository"] "."])
 
