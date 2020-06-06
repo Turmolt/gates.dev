@@ -185,7 +185,7 @@
                       :update sketch-update
                       :draw draw
                       :atom art}]]
-            "Exquisite! I hope that this walkthrough has helped you gain a better understanding of how we can utilize the tools that Reagent and React have provide us to bend the web to our will. Remember, with great power comes great responsibility. Now go forth and create!"])
+            "Exquisite! I hope that this walkthrough has helped you gain a better understanding of how we can utilize the tools that Reagent and React provide us to bend the web to our will. Remember, with great power comes great responsibility. Now go forth and create!"])
 
 (defn panel []
   (set! (. js/document -title) title)
