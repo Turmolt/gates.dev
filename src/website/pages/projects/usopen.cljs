@@ -39,8 +39,10 @@
   (q/ellipse 30 30 40 40)
   (q/no-fill)
   (q/stroke 255)
-  (q/curve 10 10 10 30 40 13 10 10)
-  (q/curve 50 50 25 49 49 28 50 45))
+  (let [coords [[[10 10] [10 30] [40 13] [10 10]] 
+                [[50 50] [25 49] [49 28] [50 45]]]]
+    (q/curve 10 10 10 30 40 13 10 10)
+    (q/curve 50 50 25 49 49 28 50 45)))
 
 (defn icon []
   [:div {:style {:width 60 :height 60 :margin 10 :margin-top 20 :float :left}}

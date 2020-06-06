@@ -64,7 +64,7 @@
     [link "https://umaine.edu/vemi/" "Virtual Environment and Multimodal Interaction laboratory"]
     " at the University of Maine where I helped create projects that pushed the limits of human-computer interaction. "
     "I enjoy spending my free time making games, tinkering with shaders, clojure, and taking my dog on adventures."]
-   [:p "If you would like to partner up and create something awesome " [link "mailto:sam@gates.dev" "contact me"] " and we can make it happen."]])
+   [:p "If you would like to partner up and create something awesome, " [link "mailto:sam@gates.dev" "contact me"] " and we can make it happen."]])
 
 
 

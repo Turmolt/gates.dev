@@ -46,14 +46,13 @@
     (q/rect (+ -10 (mod (* -25 (+ 1 f)) 75)) 50 10 3)
     (q/rect (+ -10 (mod (* -25 (+ 2 f)) 75)) 50 10 3)
     (apply q/fill [255 0 0])
-    (q/rect (+ d 2) (+ (/ c 1.5) 30) 52 15)
-    (q/quad (+ d 10) (+ (/ c 2.0) 17) (+ d 10) (+ (/ c 2.0) 42) (+ d 45) (+ (/ c 2.0) 42) (+ d 35) (+ (/ c 2.0) 17))
+    (q/rect (+ d 4) (+ (/ c 1.5) 30) 52 15)
+    (q/quad (+ d 14) (+ (/ c 2.0) 17) (+ d 12) (+ (/ c 2.0) 42) (+ d 47) (+ (/ c 2.0) 42) (+ d 37) (+ (/ c 2.0) 17))
     (apply q/fill [100 100 100])
-    (q/quad (+ d 15) (+ (/ c 2.0) 19) (+ d 15) (+ (/ c 2.0) 30) (+ d 38) (+ (/ c 2.0) 30) (+ d 34) (+ (/ c 2.0) 19))
- ; (q/rect 7 20 41 25 30 30 1 1)
+    (q/quad (+ d 16) (+ (/ c 2.0) 19) (+ d 15) (+ (/ c 2.0) 30) (+ d 40) (+ (/ c 2.0) 30) (+ d 36) (+ (/ c 2.0) 19))
     (apply q/fill [0 0 0])
-    (q/ellipse (+ d 10) 45 10 10)
-    (q/ellipse (+ d 45) 45 10 10)))
+    (q/ellipse (+ d 12) 45 10 10)
+    (q/ellipse (+ d 47) 45 10 10)))
 
 (defn icon []
   [:div {:style {:width 60 :height 60 :margin 10 :margin-top 20 :float :left}}
@@ -86,7 +85,6 @@
    [:h2 title]
    [:p {:style {:padding 0 :font-size 10 :margin-top -15}} date]
    [:div body]])
-
 
 (def post {:name title
            :route (str "https://heliosinteractive.com/project/aapex/")

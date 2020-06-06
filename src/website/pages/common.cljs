@@ -7,15 +7,16 @@
 
 (def mobile (> 960 (.-width js/screen)))
 
+(def width (.-innerWidth js/window))
+(def height (.-innerHeight js/window))
+
 (defn iframe
-  [{src :src name :name}]
-  [:iframe {:src src
+  [{:keys [src name]}]
+  [:iframe {:class "frame"
+            :src src
             :name name
             :scrolling :no
-            :width "960px"
-            :height "600px"
             :style {:border "0px none"
-                    :margin-left -130
                     :margin-top 5
                     :margin-bottom 10}}])
 
