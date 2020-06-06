@@ -6,11 +6,11 @@
            [website.pages.projects.ohcrap :as ohcrap]
            [website.pages.projects.vvc :as vvc]
            [website.pages.projects.usopen :as usopen]
-           ))
+           [website.pages.projects.omegavr :as omega]))
 
 (def posts [p1/post p0/post])
 
-(def projects [ohcrap/post usopen/post vvc/post gardener/post])
+(def projects [ohcrap/post usopen/post vvc/post gardener/post omega/post])
 
 (def pages (flatten (conj posts projects)))
 

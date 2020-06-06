@@ -56,9 +56,8 @@
                  :padding 15
                  :font-size 18
                  :line-height 1.4
-                 :text-align :justify
                  :margin :auto}
-         :class :f400}
+         :class "home f400"}
    [:p "Hi, I'm Sam, a software engineer with a passion for creative coding. I am currently a developer at "
     [link "http://www.heliosinteractive.com" "Helios Interactive"]
     " where I work with a talented team to create innovative marketing solutions, interactive games, and data visualizations. While in college I was a developer for the "

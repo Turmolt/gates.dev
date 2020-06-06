@@ -34,7 +34,7 @@
   [(+ 30 (* 20 (Math/cos t))) (+ 30 (* 20 (Math/sin t)))])
 
 (defn icon-draw [circles]
-  (apply q/background [255 255 255])
+  (apply q/background [225 255 225])
   (apply q/fill [20 200 20])
   (q/ellipse 30 30 40 40)
   (q/no-fill)

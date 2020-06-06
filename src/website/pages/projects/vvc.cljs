@@ -34,12 +34,19 @@
   [(+ 30 (* 20 (Math/cos t))) (+ 30 (* 20 (Math/sin t)))])
 
 (defn icon-draw [circles]
-  (apply q/background [255 255 255])
+  (apply q/background [200 200 200])
   (q/no-stroke)
-  (let [d (Math/sin (first circles))
+  (apply q/fill [100 100 100])
+  (q/rect 0 40 60 20)
+  (apply q/fill [200 200 0])
+  (let [f (first circles)
+        d (Math/sin f)
         c (Math/cos (second circles))]
+    (q/rect (+ -10 (mod (* -25 f) 75)) 50 10 3)
+    (q/rect (+ -10 (mod (* -25 (+ 1 f)) 75)) 50 10 3)
+    (q/rect (+ -10 (mod (* -25 (+ 2 f)) 75)) 50 10 3)
     (apply q/fill [255 0 0])
-    (q/rect (+ d 2) (+ (/ c 2.0) 30) 52 15)
+    (q/rect (+ d 2) (+ (/ c 1.5) 30) 52 15)
     (q/quad (+ d 10) (+ (/ c 2.0) 17) (+ d 10) (+ (/ c 2.0) 42) (+ d 45) (+ (/ c 2.0) 42) (+ d 35) (+ (/ c 2.0) 17))
     (apply q/fill [100 100 100])
     (q/quad (+ d 15) (+ (/ c 2.0) 19) (+ d 15) (+ (/ c 2.0) 30) (+ d 38) (+ (/ c 2.0) 30) (+ d 34) (+ (/ c 2.0) 19))
