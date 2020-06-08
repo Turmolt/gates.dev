@@ -8,7 +8,7 @@
   [website.pages.common :refer [link canvas]]))
 
 
-(def title "Damanation Army")
+(def title "Damnation Army")
 (def body-preview "A dungeon-crawling shop game made for the Yogscast Game Jam")
 (def date "December 2019")
 (def body 
