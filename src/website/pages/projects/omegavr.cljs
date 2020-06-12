@@ -32,6 +32,7 @@
 
 (defn panel []
   (set! (. js/document -title) title)
+  ;(.scrollTo js/window 0 0)
   [:div
    {:class "f400"
     :style {:max-width 700 :margin :auto
