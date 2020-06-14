@@ -8,7 +8,7 @@
   [website.pages.common :refer [link canvas]]))
 
 
-(def title "LBX Link Belt Excavators")
+(def title "Link Belt Excavators")
 (def body-preview "Two tablet applications for customizing t-shirts and viewing excavators in AR")
 (def date "June 2019")
 (def body 

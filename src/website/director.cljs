@@ -12,7 +12,7 @@
 
 (def posts [p1/post p0/post])
 
-(def projects [ohcrap/post usopen/post damnation/post lbx/post vvc/post gardener/post omega/post])
+(def projects [ohcrap/post lbx/post usopen/post damnation/post vvc/post gardener/post omega/post])
 
 (def pages (flatten (conj posts projects)))
 
