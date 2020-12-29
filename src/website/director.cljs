@@ -2,6 +2,7 @@
  (:require [re-frame.core :as rf]
            [website.pages.posts.first :as p0]
            [website.pages.posts.one :as p1]
+           [website.pages.posts.autopainter :as autopainter]
            [website.pages.projects.gardener :as gardener]
            [website.pages.projects.ohcrap :as ohcrap]
            [website.pages.projects.vvc :as vvc]
@@ -10,7 +11,7 @@
            [website.pages.projects.damnationarmy :as damnation]
            [website.pages.projects.lbxcon :as lbx]))
 
-(def posts [p1/post p0/post])
+(def posts [autopainter/post p1/post p0/post])
 
 (def projects [ohcrap/post lbx/post usopen/post damnation/post vvc/post gardener/post omega/post])
 
