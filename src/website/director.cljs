@@ -1,5 +1,6 @@
 (ns website.director
  (:require [re-frame.core :as rf]
+           [website.pages.posts.techart :as techart]
            [website.pages.posts.first :as p0]
            [website.pages.posts.one :as p1]
            [website.pages.posts.autopainter :as autopainter]
@@ -12,7 +13,7 @@
            [website.pages.projects.whatliesbelow :as whatliesbelow]
            [website.pages.projects.lbxcon :as lbx]))
 
-(def posts [autopainter/post p1/post p0/post])
+(def posts [techart/post autopainter/post p1/post p0/post])
 
 (def projects [whatliesbelow/post ohcrap/post lbx/post usopen/post damnation/post vvc/post gardener/post omega/post])
 
