@@ -58,9 +58,10 @@
                  :line-height 1.4
                  :margin :auto}
          :class "home f400"}
-   [:p "Hi, I'm Sam, a software engineer with a passion for creative coding. I am currently a developer at "
+   [:p "Hi, I'm Sam, a software engineer with a passion for creative coding. I am currently a developer at " [link "https://hello.vrchat.com/" "VRChat"]
+    " where I work on the client team to help ensure the best experience possible for our players. Previously I worked at "
     [link "http://www.heliosinteractive.com" "Helios Interactive"]
-    " where I work with a talented team to create innovative marketing solutions, interactive games, and data visualizations. While in college I was a developer for the "
+    " where I worked to create innovative marketing solutions, interactive games, and data visualizations. While in college I was a developer for the "
     [link "https://umaine.edu/vemi/" "Virtual Environment and Multimodal Interaction laboratory"]
     " at the University of Maine where I helped create projects that pushed the limits of human-computer interaction. "
     "I enjoy spending my free time making games, tinkering with shaders, clojure, and taking my dog on adventures."]
