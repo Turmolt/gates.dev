@@ -12,11 +12,13 @@
            [website.pages.projects.damnationarmy :as damnation]
            [website.pages.projects.whatliesbelow :as whatliesbelow]
            [website.pages.projects.mercedestennis :as mercedestennis]
-           [website.pages.projects.lbxcon :as lbx]))
+           [website.pages.projects.circuitbreaker :as circuitbreaker]
+           [website.pages.projects.puzzleclock :as puzzleclock]
+           [website.pages.projects.beelivery :as beelivery]))
 
 (def posts [techart/post autopainter/post p1/post p0/post])
 
-(def projects [mercedestennis/post whatliesbelow/post ohcrap/post lbx/post usopen/post damnation/post vvc/post gardener/post omega/post])
+(def projects [circuitbreaker/post beelivery/post puzzleclock/post mercedestennis/post whatliesbelow/post ohcrap/post usopen/post damnation/post vvc/post gardener/post omega/post])
 
 (def pages (flatten (conj posts projects)))
 

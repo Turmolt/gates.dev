@@ -87,7 +87,7 @@
    [:div body]])
 
 (def post {:name title
-           :route (str "https://heliosinteractive.com/project/aapex/")
+           :route (str "https://www.youtube.com/embed/7KjxD6miMPY")
            :icon icon
            :title title
            :preview body-preview
