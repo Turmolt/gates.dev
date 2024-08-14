@@ -8,8 +8,8 @@
    [website.pages.common :refer [link canvas]]))
 
 
-(def title "Tech Art/Game Dev R&D Youtube Playlist")
-(def body-preview "An assortment of videos from some of my tech art/game dev adventures")
+(def title "Tech Art Reel")
+(def body-preview "A collection of my technical art and game development projects")
 (def date "Ongoing")
 
 (def body
@@ -47,7 +47,7 @@
 
 
 (def post {:name "techart"
-           :route (str "https://www.youtube.com/playlist?list=PLJcC5y5Vq9Ke45LwP18fIy1QbhR9YK6M9")
+           :route (str "https://www.youtube.com/watch?v=SGoObzDR_Mg")
            :icon icon
            :title title
            :preview body-preview
